@@ -1,0 +1,39 @@
+[
+    {
+        "workoutName": "全身 HIIT 訓練",
+        "description": "這個高強度間歇性訓練將專注於全身的肌肉群，每個動作持續時間短，強度高。",
+        "duration": "30分鐘",
+        "difficulty": "高",
+        "equipment": [
+            "跳繩",
+            "啞鈴",
+            "平衡球"
+        ]
+    },
+    {
+        "workoutName": "核心肌肉訓練",
+        "description": "這個訓練將專注於核心肌群的鍛鍊，包括仰臥起坐、平板支撐等動作。",
+        "duration": "20分鐘",
+        "difficulty": "中等",
+        "equipment": [
+            "瑜伽墊"
+        ]
+    },
+    {
+        "workoutName": "上半身肌肉訓練",
+        "description": "這個訓練將專注於上半身的肌肉群，包括臥推、引體向上等動作。",
+        "duration": "45分鐘",
+        "difficulty": "高",
+        "equipment": [
+            "啞鈴",
+            "槓鈴"
+        ]
+    },
+    {
+        "workoutName": "有氧運動",
+        "description": "這個訓練主要針對心肺功能的鍛煉，包括跑步、划船、跳繩等動作。",
+        "duration": "30分鐘",
+        "difficulty": "中等",
+        "equipment": []
+    }
+]

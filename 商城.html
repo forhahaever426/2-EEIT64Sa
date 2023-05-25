@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+
+</head>
+<style>
+   
+    .product {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 40px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        max-width: 450px;
+        /* width: calc(33.33% - 100px); */
+        width: calc((100% - 80px) / 3);
+  max-width: calc((100% - 80px) / 3);
+    }
+    .products {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+
+    .product h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+        text-align: center;
+        color: #03c;
+        font-weight: bold;
+    }
+
+    .product p {
+        font-size: 18px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .product button {
+        background-color: #008CBA;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+        margin-top: 1%;
+    }
+
+    h6 {
+        color: red;
+        font-size: 30px;
+        font-style: italic;
+    }
+    input{
+        width: 80px;
+    }
+    
+</style>
+<link rel="stylesheet" href="./spotify.css">
+<script>
+    fetch('./乳清.json')
+        .then(response => response.json())
+        .then(data => {
+            const productsContainer = document.querySelector('.products');
+            productsContainer.textContent = ''; // 刪除原本的商品列表
+
+            for (const product of data) {
+                const productElement = document.createElement('div');
+                productElement.classList.add('product');
+
+                const nameElement = document.createElement('h2');
+                nameElement.textContent = product.name;
+
+                const descriptionElement = document.createElement('p');
+                descriptionElement.textContent = product.description;
+
+                const priceElement = document.createElement('h6');
+                priceElement.textContent = `${product.price}元`;
+
+
+
+                const imageElement = document.createElement('img');
+                imageElement.src = product.imageUrl;
+                imageElement.style.height = '200px';
+
+
+
+                const quantityElement = document.createElement('input');
+                quantityElement.type = 'number';
+                quantityElement.value = 1;
+                quantityElement.classList.add('quantity');
+
+                const labelElement = document.createElement('label');
+                labelElement.textContent = '數量：';
+                labelElement.appendChild(quantityElement);
+
+
+                const buttonElement = document.createElement('button');
+                buttonElement.textContent = '加入購物車';
+
+                buttonElement.dataset.productName = product.name;
+                buttonElement.dataset.productPrice = product.price;
+                buttonElement.dataset.productImage = product.imageUrl;
+
+
+
+                productElement.appendChild(imageElement);
+                productElement.appendChild(nameElement);
+                productElement.appendChild(descriptionElement);
+                productElement.appendChild(priceElement);
+                productElement.appendChild(labelElement);
+                productElement.appendChild(buttonElement);
+                productsContainer.appendChild(productElement);
+
+                
+                $(buttonElement).click(function () {
+                    let quantity = $(this).closest('.product').find('.quantity').val();
+                    let productName = $(this).data('productName'); // 從 dataset 中讀取產品名稱
+                    let productPrice = $(this).data('productPrice'); 
+                    let productImage = $(this).data('productImage');
+                    let cart = JSON.parse(localStorage.getItem('cart')) || {};
+
+                    if (cart[productName]) { // 如果商品已經在購物車中
+                        cart[productName].quantity += parseInt(quantity); // 增加商品數量
+                    } else {
+                        cart[productName] = {
+                            quantity: quantity,
+                            image: productImage,
+                            price: productPrice
+                        }
+                    }
+
+                    
+                    localStorage.setItem('cart', JSON.stringify(cart)); //要存到localstorage要轉成json字串
+                    alert('已加入購物車！');
+                });
+            }
+        });
+</script>
+
+
+
+<body>
+    <div class="header">
+        <div class="container1">
+            <a href="#" class="logo">
+                <i class="fab fa-spotify fa-3x"></i>
+                <span>RickyFitness</span>
+            </a>
+
+            <nav class="navbar">
+                <a href="./RickyFitness.html" class="item">首頁</a>
+                <a href="./商城.html" class="item">線上商城</a>
+                <a href="./tdee.html" class="item">tdee計算機</a>
+                <a href="./teach.html" class="item">訓練教學</a>
+            </nav>
+
+        </div>
+    </div>
+
+    <h1 style="text-align: center; margin-top: 2%;">商品列表</h1>
+    <div class="products">
+        <div class="product">
+
+            <h2></h2>
+            <h6></h6>
+            <p>商品描述1</p>
+
+            <button>加入購物車</button>
+        </div>
+        <div class="product">
+
+            <h2>商品2</h2>
+            <p>商品描述2</p>
+            <h6></h6>
+            <button>加入購物車</button>
+        </div>
+        <div class="product">
+
+            <h2>商品3</h2>
+            <p>商品描述3</p>
+            <button>加入購物車</button>
+        </div>
+        <div class="product">
+
+            <h2>商品4</h2>
+            <p>商品描述4</p>
+            <button>加入購物車</button>
+        </div>
+        <div class="product">
+            <h2>商品5</h2>
+            <p>商品描述5</p>
+            <button>加入購物車</button>
+        </div>
+    </div>
+
+
+
+    <div class="cart" style="text-align: center; margin-bottom: 2%;">
+        <a class="html " href="./購物車.html">前往購物車</a>
+
+    </div>
+
+    <footer>
+
+        <div class="container">
+            <div class='row'>
+                <div class='col-md-4 text-left'>
+                    <img src='./logo.png' width='100'>
+                    <p>最專業的健身課程，快一起加入我們!</p>
+
+                </div>
+                <div class='col-md-4 text-left'>
+                    <h4>連結</h4>
+                    <ul>
+                        <li><a href='./RickyFitness.html'>首頁</a></li>
+                        <li><a href='./商城.html'>線上商城</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href='./tdee.html'>tdee計算機</a></li>
+                        <li><a href='./teach.html'>訓練教學</a></li>
+                    </ul>
+                </div>
+                <div class='col-md-4 text-left'>
+                    <h4>聯絡我們</h4>
+                    <p>台中市南屯區公益路二段51號18樓<br>
+                        Phone: 04 2326 5860<br>
+                        E-Mail: <a href='mailto:w2518823@gmail.com'>w2518823@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <style>
+        h1 {
+            text-align: center;
+            margin: 2%;
+        }
+
+        iframe {
+            width: 350px;
+            height: 200px;
+        }
+
+        .video {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        p {
+
+            margin-bottom: 1px;
+            text-align: center;
+            color: black;
+        }
+
+        .video1 {
+            background-color: rgb(206, 201, 201);
+            width: 95%;
+            margin: 0 auto;
+            margin-top: 2%;
+            border-radius: 20px;
+            padding-top: 1px;
+            box-shadow: 0px 0px 5px black;
+        }
+    </style>
+</head>
+<link rel="stylesheet" href="./spotify.css">
+
+<body>
+    <div class="header">
+        <div class="container1">
+            <a href="#" class="logo">
+                <i class="fab fa-spotify fa-3x"></i>
+                <span>RickyFitness</span>
+            </a>
+
+            <nav class="navbar">
+                <a href="./RickyFitness.html" class="item">首頁</a>
+                <a href="./商城.html" class="item">線上商城</a>
+                <a href="./tdee.html" class="item">tdee計算機</a>
+                <a href="./teach.html" class="item">訓練教學</a>
+            </nav>
+
+        </div>
+    </div>
+
+
+
+    <!-- <script>
+        $(function () {
+            // 使用 AJAX 讀取 JSON 檔案
+            $.ajax({
+                url: './專題.json',
+                dataType: 'json',
+                success: function (data) {
+                    // 建立表格列
+                    const tableBody = document.getElementById('workouts-table');
+                    data.forEach(workout => {
+                        const row = tableBody.insertRow(-1);
+                        const nameCell = row.insertCell(0);
+                        const descriptionCell = row.insertCell(1);
+                        const durationCell = row.insertCell(2);
+                        const difficultyCell = row.insertCell(3);
+                        const equipmentCell = row.insertCell(4);
+
+                        // 設定表格資料
+                        nameCell.innerHTML = workout.workoutName;
+                        descriptionCell.innerHTML = workout.description;
+                        durationCell.innerHTML = workout.duration;
+                        difficultyCell.innerHTML = workout.difficulty;
+                        equipmentCell.innerHTML = workout.equipment.join(', ');
+                    });
+                },
+
+            });
+        });
+    </script> -->
+
+    <!-- <script>
+    $(function () {
+        // 使用 fetch 讀取 JSON 檔案
+        fetch('./專題.json')
+            .then(response => response.json())
+            .then(data => {
+                // 建立表格列
+                const tableBody = document.getElementById('workouts-table');
+                data.forEach(workout => {
+                    const row = tableBody.insertRow(-1);
+                    const nameCell = row.insertCell(0);
+                    const descriptionCell = row.insertCell(1);
+                    const durationCell = row.insertCell(2);
+                    const difficultyCell = row.insertCell(3);
+                    const equipmentCell = row.insertCell(4);
+
+                    // 設定表格資料
+                    nameCell.innerHTML = workout.workoutName;
+                    descriptionCell.innerHTML = workout.description;
+                    durationCell.innerHTML = workout.duration;
+                    difficultyCell.innerHTML = workout.difficulty;
+                    equipmentCell.innerHTML = workout.equipment.join(', ');
+                });
+            })
+            .catch(error => console.error(error));
+    });
+</script> -->
+
+    <!-- <table>
+        <thead>
+            <tr>
+                <th>訓練名稱</th>
+                <th>描述</th>
+                <th>時長</th>
+                <th>難度</th>
+                <th>器材</th>
+            </tr>
+        </thead>
+        <tbody id="workouts-table">
+        </tbody>
+    </table> -->
+    <div class="video1">
+        <h1>胸部肌群</h1>
+        <p>訓練胸肌不僅可以讓胸部發達有彈性，也能更好地保護胸腔內髒器和肋骨。</p>
+        <p>首先，強化胸肌可以提高上肢的爆發力，對於從事需要手臂力量的運動或工作的人來說非常重要!</p>
+        <p>而且訓練胸肌也可以一併改善姿勢，避免出現圓肩駝背等問題。而胸肌也是許多日常活動所需的肌肉之一，如抬重物或推拉門等。</p>
+        <br>
+        <div class="video">
+            <iframe width="642" height="361" src="https://www.youtube.com/embed/nKjAD5hN3Go"
+                title="大H | IFBB PRO | 訓練實錄 | 胸肌訓練實錄 大H教你打造厚實胸肌" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/9nzLWoFvT1Y"
+                title="胸肌練不大？提升胸肌訓練成效的四個秘訣，這些動作錯誤不要再犯｜槓鈴臥推、啞鈴飛鳥、啞鈴臥推、伏地挺身 ft.  Kerry 教練" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            <iframe width="642" height="361" src="https://www.youtube.com/embed/sK2_vqW_ygE"
+                title="飽滿胸肌訓練❗️五個訓練動作💥胸肌炸起來" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+        </div>
+        <br>
+        <br>
+    </div>
+    <div class="video1">
+        <h1>背部肌群</h1>
+        <p>背肌位於身體後方，主要負責支撐上肢和維持良好的姿勢，同時也是許多日常生活和運動動作的重要肌肉。</p>
+        <p>訓練背肌可以增強身體的穩定性和平衡性，有助於減少姿勢不良所帶來的不適感，同時也可以提高上肢的力量和耐力。</p>
+        <p>強健的背部肌肉還有助於減少背部受傷的風險，特別是對於長時間坐著工作的人來說更是重要。</p>
+        <br>
+        <div class="video">
+            <iframe width="642" height="361" src="https://www.youtube.com/embed/51iaxWTFVhY"
+                title="單薄的男生，練出寬厚背部的方法丨背部如何發力【卓叔增重】" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            <iframe width="642" height="361" src="https://www.youtube.com/embed/grckZGuHnbQ"
+                title="【引體向上】原來要先做這個動作才能練出鬼背 單槓練背的秘密！│健人訓練│ 2022ep39" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            <iframe width="642" height="361" src="https://www.youtube.com/embed/N3z3DjxXpE4"
+                title="初學者讓背肌更大的訓練技巧 (中文字幕)" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+        </div>
+        <br>
+        <br>
+    </div>
+    <div class="video1">
+        <h1>腿部肌群</h1>
+        <p>腿肌是人體腿部的主要肌肉群之一，腿部肌群佔全身60-70%的比例，投資報酬率極高</p>
+        <p>訓練腿肌可以提高運動表現和身體平衡性，更可以提高身體的新陳代謝率</p>
+        <p>並且練腿也可以促使肌肉生長，腿部肌群與其他部位相比，肌肉量高，也就是說想要增肌，不能忽略腿部的鍛鍊。</p>
+        <p>過去也有研究顯示，透過硬舉、蹲舉等必須大量使用腿部的複合式動作，能影響睪固酮的分泌，對提升整體肌肉量也有幫助。</p>
+        <br>
+        <div class="video">
+            <iframe width="642" height="361" src="https://www.youtube.com/embed/LjldfLkxfnI"
+                title="練腿太累、深蹲傷膝蓋，新手如何克服練腿的困難？【卓叔增重】" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            <iframe width="642" height="361" src="https://www.youtube.com/embed/VBWkfazRkhs"
+                title="每個人的深蹲都不同！量身打造你的深蹲姿勢｜腿部訓練、下肢訓練、蹲舉、姿勢設定 ft. Kerry 教練" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            <iframe width="642" height="361" src="https://www.youtube.com/embed/T9RT-BpC5yw"
+                title="熱狗超乎常人的腿圍，原來是用＿＿練成的？【重裝來訓練】Feat. @ackj0301 ｜易看易懂的練腿秘訣入門｜TeamJoined" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+        </div>
+        <br>
+        <br>
+    </div>
+    <div class="video1">
+        <h1>核心肌群</h1>
+        <p>訓練核心肌群不僅讓你有好看的腹肌，還包含了許多的好處!</p>
+        <p>核心肌群是指人體軀幹部位的肌肉，包括腹肌、腰肌、下背肌群等部位。</p>
+        <p>訓練核心肌群可以增強腹部和腰部的肌肉力量，提高身體的平衡和穩定性，減少損傷風險，提高整體的平衡力與穩定力。</p>
+        <p>也可以改善姿勢和身體對重力的控制，有助於減輕背部和腰部的壓力和疼痛。</p>
+        <br>
+        <div class="video">
+            <iframe width="642" height="361" src="https://www.youtube.com/embed/KJrvklI-M0I"
+                title="夏天秀腹肌必備的腹肌訓練｜好看腹肌的三個重點" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            <iframe width="642" height="361" src="https://www.youtube.com/embed/Fs1MMJ3X4Rc"
+                title="大H | IFBB PRO | 在家訓練 | 4個腹肌訓練動作 打造立體冰塊腹肌 搞懂腹肌再練腹肌 5大腹肌訓練迷思" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            <iframe width="642" height="361" src="https://www.youtube.com/embed/xm9nVP2VnyE"
+                title="【无器械】6分钟高效腹肌训练(男女通用）" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+
+        </div>
+        <br>
+        <br>
+    </div>
+    <footer>
+
+        <div class="container">
+            <div class='row'>
+                  <div class='col-md-4 text-left'>
+                      <img src='./logo.png' width='100'>
+                      <p>最專業的健身課程，快一起加入我們!</p>
+                  </div>
+                  <div class='col-md-4 text-left'>
+                    <h4>連結</h4>
+                    <ul>
+                        <li><a href='./RickyFitness.html'>首頁</a></li>
+                        <li><a href='./商城.html'>線上商城</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href='./tdee.html'>tdee計算機</a></li>
+                        <li><a href='./teach.html'>訓練教學</a></li>
+                    
+                    </ul>						  
+                </div>
+                  <div class='col-md-4 text-left'>
+                      <h4>聯絡我們</h4>
+                      <p>台中市南屯區公益路二段51號18樓<br>
+                         Phone: 04 2326 5860<br>
+                         E-Mail: <a href='mailto:w2518823@gmail.com'>w2518823@gmail.com</a>
+                      </p>
+                  </div>
+            </div>
+        </div>
+
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+</head>
+<link rel="stylesheet" href="./spotify.css">
+
+<body>
+    <div class="header">
+        <div class="container1">
+            <a href="#" class="logo">
+                <i class="fab fa-spotify fa-3x"></i>
+                <span>RickyFitness</span>
+            </a>
+
+            <nav class="navbar">
+                <a href="./spotify.html" class="item">首頁</a>
+                <a href="./shop.html" class="item">線上商城</a>
+                <a href="./tdee.html" class="item">tdee計算機</a>
+                <a href="./teach.html" class="item">訓練動作</a>
+            </nav>
+
+        </div>
+    </div>
+
+
+
+    <script>
+        $(function () {
+            // 使用 AJAX 讀取 JSON 檔案
+            $.ajax({
+                url: './專題.json',
+                dataType: 'json',
+                success: function (data) {
+                    // 建立表格列
+                    const tableBody = document.getElementById('workouts-table');
+                    data.forEach(workout => {
+                        const row = tableBody.insertRow(-1);
+                        const nameCell = row.insertCell(0);
+                        const descriptionCell = row.insertCell(1);
+                        const durationCell = row.insertCell(2);
+                        const difficultyCell = row.insertCell(3);
+                        const equipmentCell = row.insertCell(4);
+
+                        // 設定表格資料
+                        nameCell.innerHTML = workout.workoutName;
+                        descriptionCell.innerHTML = workout.description;
+                        durationCell.innerHTML = workout.duration;
+                        difficultyCell.innerHTML = workout.difficulty;
+                        equipmentCell.innerHTML = workout.equipment.join(', ');
+                    });
+                },
+
+            });
+        });
+    </script>
+
+<!-- <script>
+    $(function () {
+        // 使用 fetch 讀取 JSON 檔案
+        fetch('./專題.json')
+            .then(response => response.json())
+            .then(data => {
+                // 建立表格列
+                const tableBody = document.getElementById('workouts-table');
+                data.forEach(workout => {
+                    const row = tableBody.insertRow(-1);
+                    const nameCell = row.insertCell(0);
+                    const descriptionCell = row.insertCell(1);
+                    const durationCell = row.insertCell(2);
+                    const difficultyCell = row.insertCell(3);
+                    const equipmentCell = row.insertCell(4);
+
+                    // 設定表格資料
+                    nameCell.innerHTML = workout.workoutName;
+                    descriptionCell.innerHTML = workout.description;
+                    durationCell.innerHTML = workout.duration;
+                    difficultyCell.innerHTML = workout.difficulty;
+                    equipmentCell.innerHTML = workout.equipment.join(', ');
+                });
+            })
+            .catch(error => console.error(error));
+    });
+</script> -->
+
+<table>
+    <!-- 表格標題 -->
+    <thead>
+        <tr>
+            <th>訓練名稱</th>
+            <th>描述</th>
+            <th>時長</th>
+            <th>難度</th>
+            <th>器材</th>
+            <th>價格</th>
+            <th>數量</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <!-- 表格內容 -->
+    <tbody id="workouts-table">
+    </tbody>
+</table>
+
+<!-- 購物車區域 -->
+<div id="cart">
+    <h2>購物車</h2>
+    <table id="cart-table">
+      <thead>
+        <tr>
+          <th>產品名稱</th>
+          <th>數量</th>
+          <th>價格</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+    <p id="total-price">總金額：0 元</p>
+  </div>
+<script>
+  let cartItems = [];
+
+// 取得購物車表格的 DOM 元素
+const cartTable = document.getElementById('cart-table');
+
+// 計算購物車總金額的函式
+function updateTotal() {
+  let totalPrice = 0;
+  cartItems.forEach(item => {
+    totalPrice += item.price * item.quantity;
+  });
+  document.getElementById('total-price').textContent = totalPrice;
+}
+
+// 取得指定產品的價格
+function getPrice(productName) {
+  let price = 0;
+  // 在購物車資料中查找指定產品
+  const product = cartItems.find(item => item.name === productName);
+  if (product) {
+    price = product.price;
+  }
+  return price;
+}
+
+// 在購物車中新增產品
+function addToCart(productName, price) {
+  // 檢查購物車中是否已有該產品
+  const index = cartItems.findIndex(item => item.name === productName);
+  if (index !== -1) {
+    // 購物車中已有該產品，增加數量
+    cartItems[index].quantity++;
+  } else {
+    // 購物車中還沒有該產品，新增項目
+    cartItems.push({
+      name: productName,
+      price: price,
+      quantity: 1
+    });
+  }
+  // 重新渲染購物車表格和總金額
+  renderCart();
+  updateTotal();
+}
+
+// 在購物車中移除產品
+function removeFromCart(productName) {
+  // 在購物車資料中查找指定產品
+  const index = cartItems.findIndex(item => item.name === productName);
+  if (index !== -1) {
+    // 購物車中有該產品，減少數量或移除項目
+    if (cartItems[index].quantity > 1) {
+      cartItems[index].quantity--;
+    } else {
+      cartItems.splice(index, 1);
+    }
+    // 重新渲染購物車表格和總金額
+    renderCart();
+    updateTotal();
+  }
+  function renderCart() {
+  const tableBody = cartTable.querySelector('tbody');
+  tableBody.innerHTML = '';
+  cartItems.forEach(item => {
+    const row = document.createElement('tr');
+    const nameCell = document.createElement('td');
+    const quantityCell = document.createElement('td');
+    const priceCell = document.createElement('td');
+    const removeButtonCell = document.createElement('td');
+    const removeButton = document.createElement('button');
+    removeButton.textContent = '移除';
+    removeButton.addEventListener('click', () => {
+      removeFromCart(item.name);
+    });
+    nameCell.innerHTML = item.name;
+    quantityCell.innerHTML = item.quantity;
+    priceCell.innerHTML = item.price;
+    removeButtonCell.appendChild(removeButton);
+    row.appendChild(nameCell);
+    row.appendChild(quantityCell);
+    row.appendChild(priceCell);
+    row.appendChild(removeButtonCell);
+    tableBody.appendChild(row);
+  });
+}
+
+// 初始化購物車
+function initCart() {
+  // 取得所有加入購物車按鈕
+  const addToCartButtons = document.querySelectorAll('.add-to-cart');
+  addToCartButtons.forEach(button => {
+    // 為每個按鈕綁定點擊事件
+    button.addEventListener('click', () => {
+      const productName = button.dataset.name;
+      const price = button.dataset.price;
+      addToCart(productName, price);
+    });
+  });
+  // 渲染購物車表格和總金額
+  renderCart();
+  updateTotal();
+}
+
+// 網頁載入完成後初始化購物車
+window.addEventListener('load', initCart);
+}
+
+
+
+</script>
+    <footer>
+
+        <div class="container">
+            <div class='row'>
+                <div class='col-md-4 text-left'>
+                    <img src='./logo.png' width='100'>
+                    <p>最專業的健身課程，快一起加入我們!</p>
+                </div>
+                <div class='col-md-4 text-left'>
+                    <h4>連結</h4>
+                    <ul>
+                        <li><a href='./spotify.html'>主頁</a></li>
+                        <li><a href='./spotify.html'>最新課程</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href='./spotify.html'>常見問題</a></li>
+                        <li><a href='./spotify.html'>聯絡我們</a></li>
+                    </ul>
+                </div>
+                <div class='col-md-4 text-left'>
+                    <h4>聯絡我們</h4>
+                    <p>台中市南屯區公益路二段51號18樓<br>
+                        Phone: 04 2326 5860<br>
+                        E-Mail: <a href='mailto:xxx@gmail.com'>xxx@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+</body>
+
+</html>

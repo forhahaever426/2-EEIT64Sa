@@ -1,0 +1,58 @@
+[
+    {
+      "name": "《美國BSN-畢斯恩》Syntha-6 乳清蛋白5磅(巧克力口味)",
+      "description": "國際知名品牌BSN，美國專業健身網熱賣優質的乳清蛋白",
+      "imageUrl": "./bsn.jpg",
+      "price":"2000"
+      
+      
+    },
+    {
+      "name": "[美國 ON] 金牌 WHEY 乳清蛋白(牛奶巧克力/2磅/罐)",
+      "description": "美國專業健身網銷售第一品牌，美國最大專業健身網站產品",
+      "imageUrl": "./on.jpg",
+      "price":"1500"
+    },
+    {
+      "name": "【英國 MYPROTEIN】Impact 乳清蛋白粉(1kg/包)",
+      "description": "每份蛋白質含量高達21克，被權威評測網LABDOOR評為 A 級產品",
+      "imageUrl": "./myprotein.jpg",
+      "price":"1200"
+    },
+    {
+      "name": "戰神MARS 乳清蛋白飲 (英式奶茶) 2kg/袋",
+      "description": "國內知名品牌，來自台灣製造，濃縮乳清蛋白，高蛋白",
+      "imageUrl": "./mars.jpg",
+      "price":"1199"
+    },
+    {
+      "name": "【台灣 TRYALL】水解乳清蛋白(500g/袋)x2袋",
+      "description": "單純無添加，80%蛋白質含量，保留完整胺基酸",
+      "imageUrl": "./tryall.jpg",
+      "price":"700"
+    },
+    {
+      "name": "【果果堅果】 分離乳清蛋白 夏日椰椰(1kg/包)",
+      "description": "採用紐西蘭優質乳清蛋白，添加水溶性纖維，有助維持消化道機能",
+      "imageUrl": "./果果.jpg",
+      "price":"900"
+    },
+    {
+      "name": "【MARS 戰神】水解乳清蛋白(無糖 醇奶茶/60入)",
+      "description": "每份26克蛋白質，無糖風味，輕盈的幼滑口感",
+      "imageUrl": "./marsmilk.jpg",
+      "price":"2550"
+    },
+    {
+      "name": "【ALLin sport】水解乳清蛋白(無糖 醇奶茶/60入)",
+      "description": " CP值高的 (分離+濃縮)乳清系列，低熱量、隨手包，攜帶方便，",
+      "imageUrl": "./allinmilk.jpg",
+      "price":"1890"
+    },
+    {
+      "name": "【惡名昭彰】分離乳清蛋白 原味1KG/包",
+      "description": "每份可提供近30g 蛋白質，經世界禁藥管制組織測試合格。",
+      "imageUrl": "./guan.jpg",
+      "price":"1280"
+    }
+  ]
