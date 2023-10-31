@@ -26,6 +26,10 @@ color: #0f0 !important;
 outline: solid #f00 1px !important;
 
 } */
+
+.error-text {
+        color: red;
+    }
 </style>
 </head>
 <link rel="stylesheet" href="./spotify.css">
@@ -106,7 +110,45 @@ outline: solid #f00 1px !important;
                 const height = parseInt(heightInput.value);
                 const weight = parseInt(weightInput.value);
                 const gender = document.querySelector('input[name="gender"]:checked').value; // 獲取使用者選擇的性別
-                
+
+
+                if (isNaN(age) && isNaN(height) && isNaN(weight)) {
+    resultDiv.innerHTML = '<span style="color: #EA0000;">請輸入資訊以便計算！</span>';
+    return; // 如果三个字段都为 NaN，不继续计算
+}
+
+if (isNaN(height) && isNaN(weight)) {
+    resultDiv.innerHTML = '<span style="color: #EA0000;">請輸入身高體重！</span>';
+    return;
+}
+
+if (isNaN(age) && isNaN(weight)) {
+    resultDiv.innerHTML = '<span style="color: #EA0000;">請輸入年齡體重！</span>';
+    return;
+}
+
+if (isNaN(age) && isNaN(height)) {
+    resultDiv.innerHTML = '<span style="color: #EA0000;">請輸入年齡身高！</span>';
+    return;
+}
+
+if (isNaN(age)) {
+    resultDiv.innerHTML = '<span style="color: #EA0000;">請輸入年齡！</span>';
+    return;
+}
+
+if (isNaN(height)) {
+    resultDiv.innerHTML = '<span style="color: #EA0000;">請輸入身高！</span>';
+    return;
+}
+
+if (isNaN(weight)) {
+    resultDiv.innerHTML = '<span style="color: #EA0000;">請輸入體重！</span>';
+    return;
+}
+
+
+
 
                 if (gender === 'male') { // 男性
                     bmr = 9.99 * weight + 6.25 * height - 5 * age + 5;
@@ -128,7 +170,9 @@ outline: solid #f00 1px !important;
                 // 根據活動係數計算TDEE
                 tdee = bmr * activityLevel;
 
-                resultDiv.innerHTML = `您的BMR約為：${bmr.toFixed(2)}大卡<br>您的TDEE約為：${tdee.toFixed(2)}大卡`;
+                resultDiv.innerHTML = `<strong>您的BMR約為：</strong><span style="color: #EA0000">${bmr.toFixed(2)}大卡</span><br><strong>您的TDEE約為：</strong><span style="color: #EA0000">${tdee.toFixed(2)}大卡</span>`;
+
+
             }
 
             // 監聽計算按鈕的點擊事件
